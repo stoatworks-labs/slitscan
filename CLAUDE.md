@@ -86,7 +86,15 @@ the scan's segments.
   the gate because Scan passes a still through unchanged and the gate distrusts a frame
   equal to its bare input; read straight off Arena's REST thumbnail they act. Nobody has
   watched Scan Sync or Flow Sync follow Arena's transport, or run it on a real GPU there.
-- No browser demo or presets.
+- No presets.
+
+## Browser demo
+- `demo/` is <https://slitscan-demo.stoatworks-labs.com>; `.github/workflows/deploy.yml`
+  deploys it on a push to main (a route, not a custom domain: `wrangler.toml`).
+- After a shader edit: `python3 demo/tools/check_shaders.py --write` (verify.sh fails on drift).
+- Locally: `python3 -m http.server -d demo`, or `npx wrangler dev` for the real `_headers`.
+- Against the plugin: `python3 demo/tools/crosscheck/crosscheck.py` (needs `build-verify/sxtest`,
+  Chrome and a GPU). AGENTS.md has the gaps and the last figures.
 
 ## Diagnostics
 

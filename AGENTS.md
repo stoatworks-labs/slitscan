@@ -195,6 +195,46 @@ Slit Line and Outline as dead and Wrap as weak: the Scan group only acts in Scan
 only in Tunnel, and Wrap only shows once the artwork travels far enough to reach the
 clip's edge. That run exits 1 on purpose.
 
+## The browser demo (2026-11-02)
+
+`demo/` is <https://slitscan-demo.stoatworks-labs.com>, built to the fleet's `resolume-demo`
+kit rules (`~/Projects/resolume/specs/DEMO-BRIEF.md`), from isohypse's. What a reader of it
+must know:
+
+- **The shaders are the plugin's**, all eight pieces plus kVersion, spliced by
+  `demo/tools/check_shaders.py --write` into `demo/shaders.js` and compared character for
+  character, with the JOIN on both sides (`Assemble( Pass )`, kScanCommon for film and scan
+  only, InitGL's five stages, plugin.js's copy). All five programs compile and link in WebGL2
+  as spliced: nothing needed `port()` beyond its version and precision lines. `tools/verify.sh`
+  runs the check.
+- **The CPU half is a port**: Controls.cpp and Rig.cpp in full (between the PORT markers in
+  `demo/plugin.js`), and the CPU half of Slitscan.cpp -- SetFloatParameter's press edge,
+  ProcessOpenGL, ensureFilm, drawCopy, bindScanCommon, renderScan, renderSlit (between the
+  FRAME markers). Change those and you change the port too. Not ported: the clock-unit vote
+  (the page's clock is seconds) and the negative-control setters (Hooks stays 0).
+- **Same formats**: film and artwork RGBA16F (EXT_color_buffer_float, or the page stops and
+  says so), the film nearest, the artwork mipmapped with Wrap's edge.
+- **No host tempo**: Scan Sync and Flow Sync run on the plugin's own 120 BPM. Restart is a
+  toggle the page releases after one frame; Centre X and Y are plain sliders.
+- **The page's own `differences` list says all of this on the page.** Keep it true.
+
+How it was verified, and how to again (it needs this Mac's GPU and Chrome, so verify.sh does
+not run it):
+
+- `demo/tools/crosscheck/crosscheck.py [--size 1280x720]` (after verify.sh, or
+  `cmake --build build-verify --target sxtest`): the harness's moving card, 60 frames at
+  60 fps, taken from the plugin in Scan at Mix 0, fed to `sxtest --pipe --bpm 0` and to the
+  page through `window.slitscanDemo.renderCase` (a fresh instance on the same clock) in
+  headless Chrome, the last frame compared. Eleven cases: Corridor at the defaults, four walls
+  on Even Exposure with a wide slit, one wall on Repeat; Tunnel square and rolled, hexagon
+  flowing backwards; Stretch on the README's warp recipe and wide and rolled; Scan down
+  looping, clockwise onto black with a wide slit, outward Once on Last Pass with the line,
+  left with a wide slit at Mix 0.7. 2 November 2026, M4 Max, Chrome through ANGLE on Metal:
+  every case 100.000% of pixels within one level of 255, at 640 × 360 and 1280 × 720; all four
+  Scan cases identical to the bit at both, the rig's at most two levels off anywhere. The
+  negative control (the page one frame short) is 87.6% at 640 × 360 and is caught. No other
+  GPU or browser has been compared.
+
 ## Not done
 
 - **Never loaded into Resolume on macOS.** On Windows the release build passed the fleet's
@@ -205,7 +245,7 @@ clip's edge. That run exits 1 on purpose.
   thumbnail glitch); read directly over REST they acted as they should. A gate that wants
   them measured needs a moving carrier, not a looser expectation. Nobody has watched Scan
   Sync or Flow Sync follow Arena's transport.
-- No browser demo, no presets.
+- No presets (the browser demo's menu is the page's own).
 - Not built: Dykstra's pinholes and rainbow stars (slipstream has them); a twisting
   outline (it would need per-pixel trig, which the GLSL avoids); a slit whose shape is
   drawn from the clip.

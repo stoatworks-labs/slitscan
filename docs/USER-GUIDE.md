@@ -536,7 +536,10 @@ Output group*). Use a blend mode that ignores black.
   beats, whatever the music is doing.
 - **Not built:** Dykstra's pinholes and the rainbow warp stars (Slipstream does those), a twisting
   outline, and a slit whose shape comes from the clip.
-- **No presets** (Resolume saves parameter presets itself), no browser demo and no OpenFX version.
+- **No presets** (Resolume saves parameter presets itself) and no OpenFX version. There is a
+  [browser demo](https://slitscan-demo.stoatworks-labs.com/) to try it before installing: the
+  plugin's own shaders with every control, but a browser, not Resolume, and it says what it
+  leaves out.
 
 ---
 

@@ -242,12 +242,20 @@ It's **never been loaded into Resolume on macOS**: on a Mac it has only been mea
 offline against the plugin's own class in a headless CGL context, plus an `oxbow` load. On
 Windows, Arena has only run it on software rendering, on a still picture. Nobody has seen how
 Scan Sync and Flow Sync follow Arena's transport, what a GPU other than this Mac's makes of
-it, or what Resolume's own clips do to the frame rate at 4K. There's no browser demo and no
-presets.
+it, or what Resolume's own clips do to the frame rate at 4K. There are no presets.
 
 Corridor and Tunnel treat the artwork as a flat backlit card and the slit as perfectly
 sharp, as the real rigs did near enough. Stretch's card fills the frame at the camera's
 closest. AGENTS.md lists what else is assumed.
+
+## Browser demo
+
+**<https://slitscan-demo.stoatworks-labs.com/>**: all four modes, every control with its own
+name, group and default. The shaders are the plugin's own GLSL, spliced unedited
+(`demo/tools/check_shaders.py`, run by `tools/verify.sh`); the CPU half is a JavaScript port,
+and `demo/tools/crosscheck/` renders it and `sxtest` over the same frames: in eleven cases
+across all four modes every pixel is within one level of the plugin's, and every Scan case is
+identical to the bit. It is a demo, not the plugin, and says what it leaves out.
 
 ## Build
 
