@@ -70,9 +70,11 @@ browser as **SW Slitscan**.
 
 The macOS download is a universal build (Apple silicon and Intel), as a `.dmg` or a `.zip`. It's
 **Developer ID-signed and notarised**, so the bundle just loads. The Windows download is an x64
-installer or a `.zip`. The installer asks which folder to put the plugin in: give it the one
-above. It isn't code-signed, so it trips SmartScreen once: **More info** → **Run anyway**. Or skip
-the installer, take `Slitscan.dll` out of the `.zip` and drop it into the folder by hand.
+installer or a `.zip`. The installer offers Arena's folder above, or Avenue's on a machine that
+only has Avenue; change it on the folder page if you use the other one. The 0.1.0 installer
+offered `C:\Program Files\Slitscan` instead, which Resolume never looks at, so give that one the
+folder above. It isn't code-signed, so it trips SmartScreen once: **More info** → **Run anyway**.
+Or skip the installer, take `Slitscan.dll` out of the `.zip` and drop it into the folder by hand.
 
 ---
 
@@ -466,8 +468,9 @@ Windows  %LOCALAPPDATA%\slitscan\logs\slitscan.YYYY-MM-DD.log
 It records the build, the GL vendor, renderer and version at load, which shader failed if one did,
 and what unit the host's clock arrives in.
 
-**It isn't in the effects browser.** Check the folder under *Installing*, including the one you gave
-the Windows installer, and that Resolume was restarted.
+**It isn't in the effects browser.** Check that `Slitscan.dll` is in the folder under *Installing*
+(the 0.1.0 Windows installer offered Program Files, which Resolume never reads), and that Resolume
+was restarted.
 
 **Scan changes nothing.** Nothing in the clip is moving. A still picture comes through a pass
 unchanged, bar the slit's own line, because there's nothing different for the slit to record.
