@@ -25,7 +25,40 @@ Walls on Four, Tunnel with a Square outline, Scan sweeping Down in 1.05 s, and S
 with the settings under [Stretch](#stretch-knoll).</sub>
 
 <!-- downloads:start -->
+
+## Download
+
+**[v0.1.0](https://github.com/stoatworks-labs/slitscan/releases/tag/v0.1.0)** — prebuilt for macOS and Windows. Pick your platform:
+
+<details>
+<summary><b>macOS</b> — Universal (Apple Silicon + Intel)</summary>
+
+| Build | Download | Size |
+| --- | --- | --- |
+| Universal (Apple Silicon + Intel) · .dmg disk image | [`slitscan-0.1.0-macos-universal.dmg`](https://github.com/stoatworks-labs/slitscan/releases/download/v0.1.0/slitscan-0.1.0-macos-universal.dmg) | 223 KB |
+| Universal (Apple Silicon + Intel) · .zip archive | [`slitscan-macos-universal.zip`](https://github.com/stoatworks-labs/slitscan/releases/latest/download/slitscan-macos-universal.zip) | 182 KB |
+
+</details>
+
+<details>
+<summary><b>Windows</b> — x64</summary>
+
+| Build | Download | Size |
+| --- | --- | --- |
+| x64 · .exe installer | [`slitscan-0.1.0-windows-x86_64-setup.exe`](https://github.com/stoatworks-labs/slitscan/releases/download/v0.1.0/slitscan-0.1.0-windows-x86_64-setup.exe) | 227 KB |
+| x64 · .zip archive | [`slitscan-windows-x86_64.zip`](https://github.com/stoatworks-labs/slitscan/releases/latest/download/slitscan-windows-x86_64.zip) | 119 KB |
+
+</details>
+
+All builds, checksums and release notes: [github.com/stoatworks-labs/slitscan/releases](https://github.com/stoatworks-labs/slitscan/releases).
+
+macOS builds are signed and notarised and open normally. The Windows builds are unsigned, so SmartScreen warns once.
+
 <!-- downloads:end -->
+
+## Video
+
+[![Slitscan: the 2001 Stargate and the phone filter, from any clip, for Resolume](docs/video-thumb.png)](https://www.youtube.com/watch?v=uUYth8S6Hvk)
 
 ## The one idea
 
