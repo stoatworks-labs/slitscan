@@ -42,6 +42,13 @@ the scan's segments.
 - CI (`.github/workflows/ci.yml`, public repo): macOS arm64 build, `sxtest --list` and
   `--offline`, glslc; a Windows x64 build through vcpkg's GLEW. No pixel checks: the
   runner has no GL.
+- Release (`.github/workflows/release.yml`): a `v*` tag builds the universal bundle and
+  the Windows DLL, zips them, makes a .dmg (`scripts/release-lib.sh`, the fleet's,
+  byte-identical to isohypse's) and an NSIS installer, and publishes. A manual dispatch
+  builds everything and publishes nothing: that's the DLL to gate in Arena on win-lab
+  before tagging. `tools/wincheck.ps1` loads the built DLL as a host does and checks its
+  name, id, type and parameter count (`-Params`: the 25 controls plus the About block's
+  text and four buttons, 30); change it with the control table.
 
 ## Notes
 - **Two cameras.** Scan keeps a film (RGBA16F, ping-ponged) and exposes it per
@@ -65,8 +72,12 @@ the scan's segments.
 - `slitscan_core` is an OBJECT library: the plugin registers itself from a file-scope
   constructor nothing references.
 - The macOS build must be universal. Check with `lipo`, never the build log.
-- `StoatworksAbout*.h` and `ATTRIBUTIONS.md` are hand copies until the plugin is
-  registered in stoatworks-backend; then they are generated there. Edit them there.
+- Generated, do not edit: `source/StoatworksAbout.h` (stoatworks-backend's
+  `scripts/sync-about.py`), `ATTRIBUTIONS.md` and the README's `attributions` block
+  (`scripts/sync-attributions.py`), `.github/FUNDING.yml` and `.github/ISSUE_TEMPLATE/`
+  (the backend's sync scripts), and the README block between the `downloads` markers
+  (`release/gen-downloads.py`). `StoatworksAboutLinks.h` and `StoatworksAboutParams.h`
+  are the fleet's hand-written FFGL half.
 
 ## Not done yet
 - Never loaded into Resolume. Public at github.com/stoatworks-labs/slitscan since

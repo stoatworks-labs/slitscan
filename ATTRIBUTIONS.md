@@ -3,9 +3,8 @@
 Slitscan is built on other people's work. This file lists what that work is, who did
 it, and what it is doing here.
 
-It will be generated: the master lists live in the `stoatworks-backend` repo and are
-pushed out by `scripts/sync-attributions.py`. Until slitscan is registered there, this
-copy is kept by hand in the same shape.
+It is generated — the master lists live in the `stoatworks-backend` repo and are
+pushed out by `scripts/sync-attributions.py`. Edit it there, not here.
 
 ## Code we derived from other people's work
 
@@ -29,7 +28,7 @@ Libraries, SDKs and frameworks the project is built on or bundles.
 Licence: BSD-3-Clause  
 Copyright: FreeFrame
 
-Vendored as a git submodule at external/ffgl.
+Vendored as a git submodule at external/ffgl (third_party/ffgl in oxbow).
 
 The plugin ABI itself. An FFGL effect or source is defined by this SDK's headers — there is no other way to be loadable by Resolume Arena and Avenue.
 
@@ -57,7 +56,7 @@ Part of the upstream SDK tree rather than something these plugins call directly 
 
 No code was taken from these — but they were how we knew we had it right, and that is worth saying out loud.
 
-### Abramowitz and Stegun, Handbook of Mathematical Functions (1964), 4.4.49
+### Handbook of Mathematical Functions, 4.4.49 — M. Abramowitz and I. A. Stegun (1964)
 
 turnsOf() in source/Shaders.cpp: the clockwise scan's angle from a minimax polynomial for atan on [0, 1], |error| ≤ 2e-8, in place of GLSL's atan, whose accuracy GLSL 4.10 does not promise. sxtest --turns checks the scan's coordinate against atan2 in double.
 
@@ -73,7 +72,7 @@ The video the plugin was asked for from: strip photography and the phone filter,
 
 ### The slit-scan rigs of Douglas Trumbull, Bernard Lodge and John Knoll
 
-Trumbull's slit-scan machine for the Stargate sequence of *2001: A Space Odyssey* (1968), Lodge's shaped slits for the *Doctor Who* title sequences of the 1970s, and Knoll's warp-stretch effect for *Star Trek: The Next Generation*. Built from how the rigs worked (a slit, a dolly, artwork sliding behind it, the shutter open throughout); nothing is copied from anyone's footage, software or design.
+Trumbull's slit-scan machine for the Stargate sequence of 2001: A Space Odyssey (1968), Lodge's shaped slits for the Doctor Who title sequences of the 1970s, and Knoll's warp-stretch effect for Star Trek: The Next Generation. Built from how the rigs worked (a slit, a dolly, artwork sliding behind it, the shutter open throughout); nothing is copied from anyone's footage, software or design.
 
 ### Strip photography
 
