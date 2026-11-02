@@ -47,7 +47,8 @@ Two cameras, four modes:
 
 - **Name and id.** `SW Slitscan`, `SX01`, bundle `com.stoatworks.ffgl.slitscan`, harness
   `sxtest`. Built in `~/dev/slitscan` because the worktree guard blocks a new repo under
-  `~/Projects` before it exists; it belongs in `~/Projects/resolume/slitscan`.
+  `~/Projects` before it exists, then moved to `~/Projects/resolume/slitscan` and made
+  public at github.com/stoatworks-labs/slitscan the same day.
 - **What it doesn't redo.** `photofinish` is the other strip camera (slit fixed, film
   moving), and `slipstream` does Dykstra's pinholes and Knoll's rainbow warp stars as
   generated stars. Slitscan is the moving slit (the phone filter) and the three rigs.
@@ -194,9 +195,9 @@ clip's edge. That run exits 1 on purpose.
 
 ## Not done
 
-- **Never loaded into Resolume**, on either platform. No Windows build, no CI (the repo
-  has no GitHub home yet; no workflow until it is public), no user guide, no browser
-  demo, no presets, no video.
+- **Never loaded into Resolume**, on either platform. The Windows build compiles in CI
+  and nowhere else. Not registered on the website, never released (no release workflow
+  yet). No user guide, no browser demo, no presets, no video.
 - Not built: Dykstra's pinholes and rainbow stars (slipstream has them); a twisting
   outline (it would need per-pixel trig, which the GLSL avoids); a slit whose shape is
   drawn from the clip.

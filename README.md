@@ -186,7 +186,8 @@ It's **never been loaded into Resolume**, on either platform. Everything above w
 compiled, rendered and measured offline against the plugin's own class in a headless CGL
 context, plus an `oxbow` load. I haven't seen the controls in Arena's inspector, how Scan
 Sync and Flow Sync follow Arena's transport, or what Resolume's own clips do to the frame
-rate at 4K. There's no Windows build yet, no user guide and no browser demo.
+rate at 4K. CI compiles a Windows build on every push, and that's all that has happened to
+it: nothing has loaded it. There's no user guide and no browser demo.
 
 Corridor and Tunnel treat the artwork as a flat backlit card and the slit as perfectly
 sharp, as the real rigs did near enough. Stretch's card fills the frame at the camera's
@@ -197,7 +198,7 @@ closest. AGENTS.md lists what else is assumed.
 macOS (universal: Apple Silicon and Intel):
 
 ```bash
-git clone --recurse-submodules <this repository>
+git clone --recurse-submodules https://github.com/stoatworks-labs/slitscan
 ```
 
 ```bash
@@ -214,6 +215,8 @@ cmake --install build
 
 The last one copies `Slitscan.bundle` into `~/Documents/Resolume Arena/Extra Effects`.
 Restart Arena and it's under Effects as **SW Slitscan**.
+
+Windows needs Visual Studio 2022 and vcpkg (for GLEW); see `.github/workflows/ci.yml`.
 
 ## Building and testing
 

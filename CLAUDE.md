@@ -39,6 +39,9 @@ the scan's segments.
 - No dead controls: `python3 tools/sweep.py` (25 swept, all live; `--bare` lists the
   ones that only act in another mode).
 - Render cost: `./build/sxtest --bench`.
+- CI (`.github/workflows/ci.yml`, public repo): macOS arm64 build, `sxtest --list` and
+  `--offline`, glslc; a Windows x64 build through vcpkg's GLEW. No pixel checks: the
+  runner has no GL.
 
 ## Notes
 - **Two cameras.** Scan keeps a film (RGBA16F, ping-ponged) and exposes it per
@@ -66,8 +69,9 @@ the scan's segments.
   registered in stoatworks-backend; then they are generated there. Edit them there.
 
 ## Not done yet
-- Never loaded into Resolume. No Windows build, no CI, no GitHub repo, no user guide,
-  no browser demo, no presets, no video.
+- Never loaded into Resolume. Public at github.com/stoatworks-labs/slitscan since
+  2026-11-02, but not registered on the website and never released. The Windows build
+  only compiles in CI. No user guide, browser demo, presets or video.
 
 ## Diagnostics
 
