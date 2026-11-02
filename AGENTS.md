@@ -74,10 +74,12 @@ Two cameras, four modes:
 - **A resize keeps the film**, nearest texel into the new raster (photofinish shipped one
   that cleared it). The scan's coordinate is a fraction of the frame, so the slit carries
   on over the same picture.
-- **About block**: three buttons (Project page, Source on GitHub, Support the work), no
-  User guide, since there is no guide yet. `StoatworksAbout*.h` and `ATTRIBUTIONS.md` are
-  hand copies in the generated files' shape until the plugin is registered in
-  stoatworks-backend; from then on they are generated there and must not be edited here.
+- **About block**: the text line and four buttons (User guide, Project page, Source on
+  GitHub, Support the work). `StoatworksAbout.h`, `ATTRIBUTIONS.md`, `.github/FUNDING.yml`
+  and `.github/ISSUE_TEMPLATE/` are generated in stoatworks-backend since the plugin was
+  registered (2026-11-02); edit them there, never here. A button more or less changes the
+  parameter count, which `tools/wincheck.ps1 -Params` in release.yml and plugin-bench's
+  `arena/expect/slitscan.json` both pin.
 
 ## The traps actually hit
 
@@ -195,9 +197,15 @@ clip's edge. That run exits 1 on purpose.
 
 ## Not done
 
-- **Never loaded into Resolume**, on either platform. The Windows build compiles in CI
-  and nowhere else. Not registered on the website, never released (no release workflow
-  yet). No user guide, no browser demo, no presets, no video.
+- **Never loaded into Resolume on macOS.** On Windows the release build passed the fleet's
+  Arena gate in Arena 7.27.1 on win-lab (llvmpipe, no GPU), twice: 9 passed, 0 failed, 1
+  skipped, all 31 controls as declared, 17 of the plugin's moving a still. The gate calls
+  Scan's Direction, Ahead, Repeat and Slit Line inconclusive, because Scan hands a still
+  carrier back unchanged and `grab()` distrusts a frame equal to its bare input (Arena's
+  thumbnail glitch); read directly over REST they acted as they should. A gate that wants
+  them measured needs a moving carrier, not a looser expectation. Nobody has watched Scan
+  Sync or Flow Sync follow Arena's transport.
+- No browser demo, no presets.
 - Not built: Dykstra's pinholes and rainbow stars (slipstream has them); a twisting
   outline (it would need per-pixel trig, which the GLSL avoids); a slit whose shape is
   drawn from the clip.

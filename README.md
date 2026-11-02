@@ -8,8 +8,9 @@
 > of 921 600. A still picture comes through a whole pass bit for bit. Every corridor,
 > tunnel and stretch pixel shows the artwork from the moment the dolly's own law says,
 > within its derived bound (worst 0.77 of it). 14 negative controls and 27 one-character
-> mutants prove the checks can fail. It's **never been loaded into Resolume**.
-> The full rundown is under [Status](#status).
+> mutants prove the checks can fail. On Windows it loads and renders in **Resolume Arena** on
+> software rendering, with every control as declared; it has **never been loaded into Resolume
+> on macOS**. The full rundown is under [Status](#status).
 
 Slit-scan and strip photography, as an FFGL effect for [Resolume](https://resolume.com)
 Arena and Avenue: the phone filter that stretches your face, Trumbull's Stargate corridor
@@ -135,7 +136,8 @@ second.
 
 ## Status
 
-**v0.1.0, unreleased.** Built and measured offline on one Mac. Nothing more yet.
+**v0.1.0**, the first release. Measured offline on one Mac, and run in Resolume Arena on
+Windows. There's a [user guide](https://stoatworks-labs.com/software/slitscan/guide/).
 
 ### Measured offline, on macOS
 
@@ -155,7 +157,7 @@ universal Release build. It runs every picture check at **two rasters**, 1280×7
 | `--tunnel` | circle, square, diamond and hexagon, rolled 30°, artwork travelling at 30°: every level set of the time map is the outline's shape, worst **0.77** of its bound |
 | `--stretch` | knife-thin, rolled 45° and off centre, and Even Exposure solved in 16 pieces: every lit pixel shows the card point the strip lit, at its place over the camera's distance then, worst 0.46 of its bound; a strip 0.2 wide against a brute-force sum, worst 0.36 |
 | `--flow` | Flow per second, beat and bar, and across ten frames of Scan in the middle: the artwork has moved what the clock says, worst 0.57 of its bound |
-| `--clock` | a host clock 499 217 238 ms into its session renders the same take as one starting at 0, to the bit |
+| `--clock` | a host clock 499 217 238 ms into its session renders the same take as one starting at 0: Scan to the bit, Corridor within 1e-5 (the artwork's start reaches the GPU as a float) |
 | `--resize` | the raster drops from 960×540 to 320×180 half way through a pass: **0** pixels hold the wrong frame afterwards |
 | `--state` | the host's GL state comes back, in all four modes, across a resize |
 | `--negative` | **14** deliberately wrong models, **14** caught |
@@ -173,6 +175,27 @@ card's, because its bilinear filter is a hair off at a texel centre and its half
 film holds more than half a float. Frame checks allow 2⁻²⁰ for that, a thousandth of the
 gap between any two frames.
 
+### In Resolume Arena, on Windows
+
+The fleet's Arena gate (`arena/` in plugin-bench) ran the release workflow's own Windows build
+in **Resolume Arena 7.27.1** on win-lab, a Windows VM with no GPU (Mesa's llvmpipe), twice. Both
+times the DLL loads and registers as `SW Slitscan`, `SX01`, an effect; all 31 controls (Arena's
+Opacity and the plugin's 30) arrive with the names, order, types, ranges and defaults declared;
+it renders; and Arena's log stays clean: **9 passed, 0 failed, 1 skipped**.
+
+Against Arena's still test picture, with Flow at 0 so the rig stands still, 17 of the plugin's
+controls measurably changed the frame, including every control that acts in Corridor, Tunnel
+and Stretch. Scan's Direction, Ahead, Repeat and Slit Line came out inconclusive. Scan hands a
+still picture back unchanged, which is the point, and the gate reads a frame identical to its
+input as Arena's habit of leaving an effect out of a thumbnail. Read straight off Arena's REST
+API instead, Ahead on Live gave the still back to the pixel bar the slit's own row, Ahead on
+Black blacked out everything the slit hadn't reached and shrank as the slit came down, Right
+moved the black to the side, and Slit Line drew its line. Scan Time, Scan Sync and Flow Sync
+only set a pace, which stills can't measure; Restart is a button. Software rendering says
+nothing about a GPU, or about speed.
+
+### Cost
+
 Render cost, GPU time by `GL_TIME_ELAPSED`, median of 120 frames after a warm-up, on a
 GPU shared with other work, so the small numbers wobble from run to run: at the defaults,
 **0.06 ms** at 720p, **0.28 ms** at 1080p and **1.19 ms** at 4K. The heaviest case
@@ -182,12 +205,12 @@ Scan is the cheapest (0.91 ms at 4K). macOS figures only.
 
 ### Not established
 
-It's **never been loaded into Resolume**, on either platform. Everything above was
-compiled, rendered and measured offline against the plugin's own class in a headless CGL
-context, plus an `oxbow` load. I haven't seen the controls in Arena's inspector, how Scan
-Sync and Flow Sync follow Arena's transport, or what Resolume's own clips do to the frame
-rate at 4K. CI compiles a Windows build on every push, and that's all that has happened to
-it: nothing has loaded it. There's no user guide and no browser demo.
+It's **never been loaded into Resolume on macOS**: on a Mac it has only been measured
+offline against the plugin's own class in a headless CGL context, plus an `oxbow` load. On
+Windows, Arena has only run it on software rendering, on a still picture. Nobody has seen how
+Scan Sync and Flow Sync follow Arena's transport, what a GPU other than this Mac's makes of
+it, or what Resolume's own clips do to the frame rate at 4K. There's no browser demo and no
+presets.
 
 Corridor and Tunnel treat the artwork as a flat backlit card and the slit as perfectly
 sharp, as the real rigs did near enough. Stretch's card fills the frame at the camera's

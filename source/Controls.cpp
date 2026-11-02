@@ -60,7 +60,7 @@ ControlInfo of( unsigned int id, const char* name, const char* group, Kind kind,
 
 //---------------------------------------------------------------------------
 // The defaults: the Stargate. Two walls, each slit's image starting 0.04 of a
-// half-height off the axis and travelling out forty times as far, a slit a
+// half-height off the axis and travelling out sixty times as far, a slit a
 // fiftieth of its offset wide, the clip sliding one width past it in each
 // exposure and drifting toward the camera at a quarter of a width a second.
 // The Scan group's defaults are the TikTok filter's: down the frame in four

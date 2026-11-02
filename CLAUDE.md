@@ -80,9 +80,13 @@ the scan's segments.
   are the fleet's hand-written FFGL half.
 
 ## Not done yet
-- Never loaded into Resolume. Public at github.com/stoatworks-labs/slitscan since
-  2026-11-02, but not registered on the website and never released. The Windows build
-  only compiles in CI. No user guide, browser demo, presets or video.
+- Never loaded into Resolume on macOS. On Windows it has been: plugin-bench's Arena gate
+  (`arena/expect/slitscan.json`) on win-lab, Arena 7.27.1 on llvmpipe, 9 passed, 0 failed,
+  twice; 17 controls change a still there. Scan's four controls come out inconclusive in
+  the gate because Scan passes a still through unchanged and the gate distrusts a frame
+  equal to its bare input; read straight off Arena's REST thumbnail they act. Nobody has
+  watched Scan Sync or Flow Sync follow Arena's transport, or run it on a real GPU there.
+- No browser demo or presets.
 
 ## Diagnostics
 

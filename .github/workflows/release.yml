@@ -158,9 +158,10 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     # makensis cross-compiles, so the installer is wrapped here from the zip the
-    # Windows job uploaded. Its directory page defaults to the common FFGL
-    # folder but stays editable, because Resolume reads plugins from a path the
-    # user chooses per edition.
+    # Windows job uploaded. Its directory page defaults to release-lib's
+    # Program Files folder, which Resolume never reads, and stays editable: the
+    # user guide tells people to give it Documents\Resolume Arena\Extra Effects
+    # (or Avenue's), since Resolume reads plugins from a folder per edition.
     steps:
       - uses: actions/checkout@v7
 
